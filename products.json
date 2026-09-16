@@ -1,37 +1,43 @@
 [
   {
     "key": "tropicalVerde",
-    "img": "images/A001.jpeg",
+    "img": "images/A001.webp",
+    "objectPosition": "50% 55%",
     "alt": "Arreglo tropical con rosas naranjas, claveles y orquídeas en base verde",
     "price": 25
   },
   {
     "key": "coloridoCristal",
-    "img": "images/A002.jpeg",
+    "img": "images/A002.webp",
+    "objectPosition": "50% 35%",
     "alt": "Arreglo colorido con rosa roja, girasol y margaritas en base de cristal",
     "price": 25
   },
   {
     "key": "rosaCristal",
-    "img": "images/A003.jpeg",
+    "img": "images/A003.webp",
+    "objectPosition": "50% 40%",
     "alt": "Arreglo con rosas rosadas y margaritas blancas en base de cristal",
     "price": 25
   },
   {
     "key": "rosaBowl",
-    "img": "images/A004.jpeg",
+    "img": "images/A004.webp",
+    "objectPosition": "50% 40%",
     "alt": "Arreglo con rosas rosadas y coral, margaritas blancas en bowl de cristal",
     "price": 25
   },
   {
     "key": "silvestreAzul",
-    "img": "images/A005.jpeg",
+    "img": "images/A005.webp",
+    "objectPosition": "50% 45%",
     "alt": "Arreglo con hortensia azul, rosas naranjas y claveles rosados en base verde",
     "price": 25
   },
   {
     "key": "amarilloRojo",
-    "img": "images/A006.jpeg",
+    "img": "images/A006.webp",
+    "objectPosition": "50% 20%",
     "alt": "Arreglo con rosa roja, crisantemos amarillos, clavel naranja y margaritas blancas en bowl de cristal",
     "price": 25
   }

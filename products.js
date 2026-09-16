@@ -2,7 +2,7 @@
   function cardHTML(p, showCategory) {
     return (
       '<article class="product-card">' +
-      '<img src="' + p.img + '" alt="' + p.alt + '">' +
+      '<img src="' + p.img + '" alt="' + p.alt + '" style="object-position: ' + p.objectPosition + '" loading="lazy" decoding="async">' +
       '<div class="product-body">' +
       '<h3 data-i18n="product.' + p.key + '.name"></h3>' +
       (showCategory ? '<p class="product-category" data-i18n="product.' + p.key + '.category"></p>' : '') +
