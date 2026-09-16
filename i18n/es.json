@@ -33,12 +33,12 @@
   "catalogo.text": "Cada arreglo se prepara al momento con flores frescas. Elige el que más te guste y pídelo por WhatsApp.",
   "catalogo.note": "¿Buscas algo personalizado? Cuéntanos tu idea por WhatsApp.",
 
-  "product.rosasVibrante.name": "Ramo de Rosas Vibrante",
-  "product.rosasVibrante.category": "Romántico",
-  "product.cajaMixta.name": "Caja de Flores Mixtas",
-  "product.cajaMixta.category": "Regalos",
-  "product.rosasRosadas.name": "Ramo de Rosas Rosadas",
-  "product.rosasRosadas.category": "Alegre",
+  "product.tropicalVerde.name": "Arreglo Tropical en Base Verde",
+  "product.tropicalVerde.category": "Tropical",
+  "product.coloridoCristal.name": "Arreglo Colorido Base de Cristal",
+  "product.coloridoCristal.category": "Alegre",
+  "product.rosaCristal.name": "Arreglo Rosa en Base de Cristal",
+  "product.rosaCristal.category": "Romántico",
   "product.ordenarPor": "quiero ordenar",
 
   "sobreNosotros.title": "Sobre Nosotros · Floristería Rafaella",

@@ -39,11 +39,11 @@ test('WhatsApp button text updates with language', async ({ page }) => {
 test('product order link text changes with language on catalogo.html', async ({ page }) => {
   await page.goto('/catalogo.html');
   const firstProductName = page.locator('article.product-card h3').first();
-  await expect(firstProductName).toHaveText('Ramo de Rosas Vibrante');
+  await expect(firstProductName).toHaveText('Arreglo Tropical en Base Verde');
 
   await page.click('[data-lang-toggle]');
-  await expect(firstProductName).toHaveText('Vibrant Rose Bouquet');
+  await expect(firstProductName).toHaveText('Tropical Arrangement in Green Base');
 
   const href = await page.locator('article.product-card a.btn-whatsapp').first().getAttribute('href');
-  expect(decodeURIComponent(href)).toContain('Vibrant Rose Bouquet');
+  expect(decodeURIComponent(href)).toContain('Tropical Arrangement in Green Base');
 });

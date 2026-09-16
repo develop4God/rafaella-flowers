@@ -33,12 +33,12 @@
   "catalogo.text": "Every arrangement is prepared fresh with fresh flowers. Pick your favorite and order it via WhatsApp.",
   "catalogo.note": "Looking for something custom? Tell us your idea on WhatsApp.",
 
-  "product.rosasVibrante.name": "Vibrant Rose Bouquet",
-  "product.rosasVibrante.category": "Romantic",
-  "product.cajaMixta.name": "Mixed Flower Box",
-  "product.cajaMixta.category": "Gifts",
-  "product.rosasRosadas.name": "Pink Rose Bouquet",
-  "product.rosasRosadas.category": "Cheerful",
+  "product.tropicalVerde.name": "Tropical Arrangement in Green Base",
+  "product.tropicalVerde.category": "Tropical",
+  "product.coloridoCristal.name": "Colorful Arrangement in Glass Base",
+  "product.coloridoCristal.category": "Cheerful",
+  "product.rosaCristal.name": "Pink Arrangement in Glass Base",
+  "product.rosaCristal.category": "Romantic",
   "product.ordenarPor": "I'd like to order",
 
   "sobreNosotros.title": "About Us · Floristería Rafaella",

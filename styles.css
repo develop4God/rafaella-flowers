@@ -82,9 +82,9 @@ h1, h2, h3, h4 {
   white-space: nowrap;
 }
 .logo-img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+  width: 76px;
+  height: 76px;
+  border-radius: 14px;
   object-fit: cover;
 }
 .nav {
@@ -572,9 +572,12 @@ h1, h2, h3, h4 {
   font-size: 0.9rem;
 }
 
-@media (max-width: 720px) {
-  .whatsapp-float span { display: none; }
+@media (max-width: 900px) {
   .header-inner { flex-direction: column; align-items: flex-start; }
   .nav { gap: 1rem; }
+}
+
+@media (max-width: 720px) {
+  .whatsapp-float span { display: none; }
   .hero-content h1 { font-size: 2rem; }
 }
