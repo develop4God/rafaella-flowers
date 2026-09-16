@@ -40,5 +40,12 @@
     "objectPosition": "50% 20%",
     "alt": "Arreglo con rosa roja, crisantemos amarillos, clavel naranja y margaritas blancas en bowl de cristal",
     "price": 25
+  },
+  {
+    "key": "rosaMargaritas",
+    "img": "images/A007.webp",
+    "objectPosition": "50% 50%",
+    "alt": "Arreglo con rosas coral y rosa, margaritas blancas en base",
+    "price": 25
   }
 ]
