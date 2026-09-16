@@ -1,4 +1,6 @@
 (function () {
+  var initialized = false;
+
   function buildOverlay() {
     var overlay = document.createElement('div');
     overlay.className = 'lightbox-overlay';
@@ -21,9 +23,11 @@
     return { overlay: overlay, img: img, closeBtn: closeBtn };
   }
 
-  document.addEventListener('DOMContentLoaded', function () {
+  function init() {
+    if (initialized) return;
     var productImages = document.querySelectorAll('.product-card img');
     if (!productImages.length) return;
+    initialized = true;
 
     var els = buildOverlay();
 
@@ -56,5 +60,8 @@
     document.addEventListener('keydown', function (event) {
       if (event.key === 'Escape') close();
     });
-  });
+  }
+
+  document.addEventListener('DOMContentLoaded', init);
+  window.FRLightbox = { init: init };
 })();

@@ -88,5 +88,5 @@
     });
   });
 
-  window.FRi18n = { t: t, getLang: getLang, waHref: waHref };
+  window.FRi18n = { t: t, getLang: getLang, waHref: waHref, applyTranslations: applyTranslations };
 })();
