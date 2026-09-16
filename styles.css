@@ -72,11 +72,20 @@ h1, h2, h3, h4 {
   gap: 1.5rem;
 }
 .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
   font-family: Georgia, serif;
   font-size: 1.4rem;
   font-weight: 700;
   color: var(--color-primary);
   white-space: nowrap;
+}
+.logo-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 .nav {
   display: flex;
