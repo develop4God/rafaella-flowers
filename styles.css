@@ -546,7 +546,7 @@ h1, h2, h3, h4 {
 /* Floating WhatsApp button */
 .whatsapp-float {
   position: fixed;
-  bottom: 1.25rem;
+  bottom: 4.5rem;
   right: 1.25rem;
   z-index: 60;
   display: flex;
