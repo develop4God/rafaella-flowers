@@ -82,8 +82,8 @@ h1, h2, h3, h4 {
   white-space: nowrap;
 }
 .logo-img {
-  width: 76px;
-  height: 76px;
+  width: 96px;
+  height: 96px;
   border-radius: 14px;
   object-fit: cover;
 }
