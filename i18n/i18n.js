@@ -61,7 +61,7 @@
     });
 
     document.querySelectorAll('[data-lang-toggle]').forEach(function (el) {
-      el.textContent = getLang() === 'es' ? 'EN' : 'ES';
+      el.textContent = getLang() === 'es' ? '🇺🇸 EN' : '🇪🇸 ES';
     });
   }
 
