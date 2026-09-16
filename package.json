@@ -1,0 +1,16 @@
+{
+  "name": "flores-rafaella",
+  "version": "1.0.0",
+  "description": "Sitio estático para la florería Flores Rafaella, en Ciudad de Panamá. Pedidos por WhatsApp.",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "http-server": "^14.1.1"
+  }
+}

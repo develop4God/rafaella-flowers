@@ -3,34 +3,42 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Flores Rafaella</title>
+<title data-i18n="index.title">Floristería Rafaella · Arreglos florales hechos con cariño</title>
+<meta name="description" data-i18n-content="index.metaDescription" content="Floristería Rafaella: arreglos florales para cumpleaños, bodas, aniversarios y momentos especiales. Pide fácil por WhatsApp. Entregas en Ciudad de Panamá.">
+<meta property="og:title" content="Floristería Rafaella · Arreglos florales hechos con cariño">
+<meta property="og:description" content="Arreglos florales para tus momentos especiales. Pide fácil por WhatsApp. Entregas en Ciudad de Panamá.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <header class="site-header">
   <div class="container header-inner">
-    <a href="#" class="logo">Flores Rafaella</a>
+    <a href="index.html" class="logo">Floristería Rafaella</a>
     <nav class="nav">
-      <a href="#inicio">Inicio</a>
-      <a href="#catalogo">Catálogo</a>
-      <a href="#nosotros">Sobre Nosotros</a>
-      <a href="#como-ordenar">Cómo Ordenar</a>
-      <a href="#contacto">Contacto</a>
+      <a href="index.html" class="active" data-i18n="nav.inicio">Inicio</a>
+      <a href="catalogo.html" data-i18n="nav.catalogo">Catálogo</a>
+      <a href="sobre-nosotros.html" data-i18n="nav.sobreNosotros">Sobre Nosotros</a>
+      <a href="como-pedir.html" data-i18n="nav.comoPedir">Cómo Pedir</a>
+      <a href="contacto.html" data-i18n="nav.contacto">Contacto</a>
     </nav>
-    <a class="btn btn-primary" href="https://wa.me/50762865416" target="_blank" rel="noopener">Ordenar Ahora</a>
+    <div class="header-actions">
+      <button type="button" class="lang-toggle" data-lang-toggle aria-label="Cambiar idioma">EN</button>
+      <a class="btn btn-primary" data-wa-message="whatsapp.textoBase" href="https://wa.me/50762865416?text=Hola%20Florister%C3%ADa%20Rafaella%2C%20quiero%20hacer%20un%20pedido%20%F0%9F%8C%B8" target="_blank" rel="noopener" data-i18n="nav.ordenarAhora">Ordenar Ahora</a>
+    </div>
   </div>
 </header>
 
 <section id="inicio" class="hero">
-  <img class="hero-bg" src="images/multiple.jpeg" alt="Arreglos florales Flores Rafaella">
+  <img class="hero-bg" src="images/multiple.jpeg" alt="Arreglos florales Floristería Rafaella">
   <div class="hero-overlay"></div>
   <div class="container hero-content">
-    <h1>Arreglos florales hechos con cariño</h1>
-    <p>Arreglos hechos a mano para tus ocasiones especiales. Ordena fácil y rápido por WhatsApp.</p>
+    <h1 data-i18n="index.hero.heading">Arreglos florales hechos con cariño</h1>
+    <p data-i18n="index.hero.text">Arreglos hechos a mano para tus ocasiones especiales. Ordena fácil y rápido por WhatsApp.</p>
     <div class="hero-actions">
-      <a class="btn btn-primary" href="#catalogo">Ver Catálogo</a>
-      <a class="btn btn-whatsapp" href="https://wa.me/50762865416" target="_blank" rel="noopener">Ordenar por WhatsApp</a>
+      <a class="btn btn-primary" href="catalogo.html" data-i18n="index.hero.verCatalogo">Ver Catálogo</a>
+      <a class="btn btn-whatsapp" data-wa-message="whatsapp.textoBase" href="https://wa.me/50762865416?text=Hola%20Florister%C3%ADa%20Rafaella%2C%20quiero%20hacer%20un%20pedido%20%F0%9F%8C%B8" target="_blank" rel="noopener" data-i18n="index.hero.ordenarWhatsapp">Ordenar por WhatsApp</a>
     </div>
   </div>
 </section>
@@ -38,49 +46,49 @@
 <section class="benefits">
   <div class="container benefits-grid">
     <div class="benefit">
-      <h3>Entrega el mismo día</h3>
-      <p>Entregas rápidas en la Ciudad de Panamá.</p>
+      <h3 data-i18n="index.benefits.entrega.title">Entrega el mismo día</h3>
+      <p data-i18n="index.benefits.entrega.text">Entregas rápidas en la Ciudad de Panamá.</p>
     </div>
     <div class="benefit">
-      <h3>Hecho a mano</h3>
-      <p>Arreglos artesanales con flores frescas.</p>
+      <h3 data-i18n="index.benefits.hecho.title">Hecho a mano</h3>
+      <p data-i18n="index.benefits.hecho.text">Arreglos artesanales con flores frescas.</p>
     </div>
     <div class="benefit">
-      <h3>Fácil de ordenar</h3>
-      <p>Solo escríbenos por WhatsApp y listo.</p>
+      <h3 data-i18n="index.benefits.facil.title">Fácil de ordenar</h3>
+      <p data-i18n="index.benefits.facil.text">Solo escríbenos por WhatsApp y listo.</p>
     </div>
   </div>
 </section>
 
 <section id="catalogo" class="products">
   <div class="container">
-    <h2>Arreglos Destacados</h2>
+    <h2 data-i18n="index.products.heading">Arreglos Destacados</h2>
     <div class="products-grid">
 
       <article class="product-card">
         <img src="images/A001.jpeg" alt="Ramo de Rosas Rojas y Naranjas">
         <div class="product-body">
-          <h3>Ramo de Rosas Vibrante</h3>
+          <h3 data-i18n="product.rosasVibrante.name">Ramo de Rosas Vibrante</h3>
           <p class="price">$35</p>
-          <a class="btn btn-whatsapp" href="https://wa.me/50762865416?text=Hola%2C%20quiero%20ordenar%20el%20Ramo%20de%20Rosas%20Vibrante%20%28%2435%29" target="_blank" rel="noopener">Ordenar por WhatsApp</a>
+          <a class="btn btn-whatsapp" data-wa-product="rosasVibrante" data-wa-price="35" href="https://wa.me/50762865416?text=Hola%2C%20quiero%20ordenar%20el%20Ramo%20de%20Rosas%20Vibrante%20%28%2435%29" target="_blank" rel="noopener" data-i18n="whatsapp.pedirBoton">Ordenar por WhatsApp</a>
         </div>
       </article>
 
       <article class="product-card">
         <img src="images/A002.jpeg" alt="Caja de Flores Mixtas">
         <div class="product-body">
-          <h3>Caja de Flores Mixtas</h3>
+          <h3 data-i18n="product.cajaMixta.name">Caja de Flores Mixtas</h3>
           <p class="price">$45</p>
-          <a class="btn btn-whatsapp" href="https://wa.me/50762865416?text=Hola%2C%20quiero%20ordenar%20la%20Caja%20de%20Flores%20Mixtas%20%28%2445%29" target="_blank" rel="noopener">Ordenar por WhatsApp</a>
+          <a class="btn btn-whatsapp" data-wa-product="cajaMixta" data-wa-price="45" href="https://wa.me/50762865416?text=Hola%2C%20quiero%20ordenar%20la%20Caja%20de%20Flores%20Mixtas%20%28%2445%29" target="_blank" rel="noopener" data-i18n="whatsapp.pedirBoton">Ordenar por WhatsApp</a>
         </div>
       </article>
 
       <article class="product-card">
         <img src="images/A003.jpeg" alt="Ramo de Rosas Rosadas">
         <div class="product-body">
-          <h3>Ramo de Rosas Rosadas</h3>
+          <h3 data-i18n="product.rosasRosadas.name">Ramo de Rosas Rosadas</h3>
           <p class="price">$30</p>
-          <a class="btn btn-whatsapp" href="https://wa.me/50762865416?text=Hola%2C%20quiero%20ordenar%20el%20Ramo%20de%20Rosas%20Rosadas%20%28%2430%29" target="_blank" rel="noopener">Ordenar por WhatsApp</a>
+          <a class="btn btn-whatsapp" data-wa-product="rosasRosadas" data-wa-price="30" href="https://wa.me/50762865416?text=Hola%2C%20quiero%20ordenar%20el%20Ramo%20de%20Rosas%20Rosadas%20%28%2430%29" target="_blank" rel="noopener" data-i18n="whatsapp.pedirBoton">Ordenar por WhatsApp</a>
         </div>
       </article>
 
@@ -90,36 +98,43 @@
 
 <section class="cta-occasion">
   <div class="container">
-    <h2>¿Tienes una ocasión especial?</h2>
-    <p>Creamos arreglos personalizados para bodas, cumpleaños y toda ocasión importante.</p>
-    <a class="btn btn-whatsapp" href="https://wa.me/50762865416" target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
+    <h2 data-i18n="index.cta.heading">¿Tienes una ocasión especial?</h2>
+    <p data-i18n="index.cta.text">Creamos arreglos personalizados para bodas, cumpleaños y toda ocasión importante.</p>
+    <a class="btn btn-whatsapp" data-wa-message="whatsapp.textoBase" href="https://wa.me/50762865416?text=Hola%20Florister%C3%ADa%20Rafaella%2C%20quiero%20hacer%20un%20pedido%20%F0%9F%8C%B8" target="_blank" rel="noopener" data-i18n="index.cta.boton">Escríbenos por WhatsApp</a>
   </div>
 </section>
 
-<footer id="contacto" class="site-footer">
+<footer class="site-footer">
   <div class="container footer-grid">
     <div>
-      <h3>Flores Rafaella</h3>
-      <p>Arreglos florales hechos con cariño en Panamá.</p>
+      <h3>Floristería Rafaella</h3>
+      <p data-i18n="footer.tagline">Arreglos florales hechos con cariño en Panamá.</p>
     </div>
     <div>
-      <h4>Contacto</h4>
-      <p>WhatsApp: <a href="https://wa.me/50762865416" target="_blank" rel="noopener">+507 6286-5416</a></p>
-      <p>Horario: Lun–Sáb, 8am–7pm</p>
-      <p>Entregas en la Ciudad de Panamá</p>
+      <h4 data-i18n="footer.contacto">Contacto</h4>
+      <p><span data-i18n="footer.whatsapp">WhatsApp</span>: <a data-wa-message="whatsapp.textoBase" href="https://wa.me/50762865416?text=Hola%20Florister%C3%ADa%20Rafaella%2C%20quiero%20hacer%20un%20pedido%20%F0%9F%8C%B8" target="_blank" rel="noopener">+507 6286-5416</a></p>
+      <p data-i18n="footer.horario">Horario: Lun–Sáb, 8am–7pm</p>
+      <p data-i18n="footer.entregas">Entregas en la Ciudad de Panamá</p>
     </div>
     <div>
-      <h4>Enlaces</h4>
-      <a href="#inicio">Inicio</a><br>
-      <a href="#catalogo">Catálogo</a><br>
-      <a href="#nosotros">Sobre Nosotros</a><br>
-      <a href="#como-ordenar">Cómo Ordenar</a>
+      <h4 data-i18n="footer.enlaces">Enlaces</h4>
+      <a href="index.html" data-i18n="nav.inicio">Inicio</a><br>
+      <a href="catalogo.html" data-i18n="nav.catalogo">Catálogo</a><br>
+      <a href="sobre-nosotros.html" data-i18n="nav.sobreNosotros">Sobre Nosotros</a><br>
+      <a href="como-pedir.html" data-i18n="nav.comoPedir">Cómo Pedir</a><br>
+      <a href="contacto.html" data-i18n="nav.contacto">Contacto</a>
     </div>
   </div>
   <div class="container footer-bottom">
-    <p>&copy; 2026 Flores Rafaella. Todos los derechos reservados.</p>
+    <p data-i18n="footer.copyright">© 2026 Floristería Rafaella. Todos los derechos reservados.</p>
   </div>
 </footer>
 
+<a class="whatsapp-float" data-wa-message="whatsapp.textoBase" href="https://wa.me/50762865416?text=Hola%20Florister%C3%ADa%20Rafaella%2C%20quiero%20hacer%20un%20pedido%20%F0%9F%8C%B8" target="_blank" rel="noopener" aria-label="Pedir por WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"></path></svg>
+  <span data-i18n="whatsapp.pedirBoton">Pedir por WhatsApp</span>
+</a>
+
+<script src="i18n/i18n.js"></script>
 </body>
 </html>
