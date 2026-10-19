@@ -61,7 +61,9 @@
     });
 
     document.querySelectorAll('[data-lang-toggle]').forEach(function (el) {
-      el.textContent = getLang() === 'es' ? '🇺🇸 EN' : '🇪🇸 ES';
+      var es = getLang() === 'es';
+      el.textContent = es ? '🇪🇸 ES' : '🇺🇸 EN';
+      el.setAttribute('aria-label', es ? 'Cambiar a inglés' : 'Switch to Spanish');
     });
   }
 
