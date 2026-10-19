@@ -47,3 +47,13 @@ test('product order link text changes with language on catalogo.html', async ({ 
   const href = await page.locator('article.product-card a.btn-whatsapp').first().getAttribute('href');
   expect(decodeURIComponent(href)).toContain('Tropical Arrangement in Green Base');
 });
+
+test('language toggle shows the current language, not the target', async ({ page }) => {
+  await page.goto('/index.html');
+  const toggle = page.locator('[data-lang-toggle]');
+  await expect(toggle).toHaveText('🇪🇸 ES');
+
+  await toggle.click();
+  await expect(toggle).toHaveText('🇺🇸 EN');
+  await expect(toggle).toHaveAttribute('aria-label', 'Switch to Spanish');
+});
