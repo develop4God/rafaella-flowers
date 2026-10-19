@@ -38,11 +38,9 @@
   }
 
   function readGallery(img) {
-    var raw = img.getAttribute('data-gallery');
-    if (raw) {
-      try { return JSON.parse(raw); } catch (e) { /* fall through to single image */ }
-    }
-    return [{ src: img.src, alt: img.alt }];
+    var key = img.getAttribute('data-product');
+    var gallery = key && window.FRProducts && window.FRProducts.getGallery(key);
+    return gallery || [{ src: img.src, alt: img.alt }];
   }
 
   function init() {

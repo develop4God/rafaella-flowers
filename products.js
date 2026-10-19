@@ -3,16 +3,14 @@
     '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
     '<rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>';
 
-  function escapeAttr(str) {
-    return str.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
-  }
+  var galleries = {};
 
   function mediaHTML(p) {
     var hasGallery = p.gallery && p.gallery.length > 1;
     return (
       '<div class="product-media">' +
       '<img src="' + p.img + '" alt="' + p.alt + '" style="object-position: ' + p.objectPosition + '" loading="lazy" decoding="async"' +
-      (hasGallery ? ' data-gallery="' + escapeAttr(JSON.stringify(p.gallery)) + '"' : '') + '>' +
+      (hasGallery ? ' data-product="' + p.key + '"' : '') + '>' +
       (hasGallery ? '<span class="product-gallery-badge">' + GALLERY_ICON + '<span data-i18n="product.verFotos"></span></span>' : '') +
       '</div>'
     );
@@ -33,6 +31,9 @@
   }
 
   function render(products) {
+    products.forEach(function (p) {
+      if (p.gallery && p.gallery.length > 1) galleries[p.key] = p.gallery;
+    });
     document.querySelectorAll('.products-grid').forEach(function (grid) {
       var featured = grid.getAttribute('data-featured');
       var showCategory = grid.hasAttribute('data-show-category');
@@ -40,6 +41,10 @@
       grid.innerHTML = list.map(function (p) { return cardHTML(p, showCategory); }).join('');
     });
   }
+
+  window.FRProducts = {
+    getGallery: function (key) { return galleries[key]; }
+  };
 
   document.addEventListener('DOMContentLoaded', function () {
     var grids = document.querySelectorAll('.products-grid');
