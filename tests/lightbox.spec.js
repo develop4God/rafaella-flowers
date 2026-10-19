@@ -47,3 +47,36 @@ test('lightbox also works on index.html featured products', async ({ page }) => 
   await page.locator('.product-card img').first().click();
   await expect(page.locator('.lightbox-overlay')).toHaveClass(/is-open/);
 });
+
+test('multi-photo product shows a badge and the lightbox navigates between photos', async ({ page }) => {
+  await page.goto('/catalogo.html');
+  const card = page.locator('.product-card', { has: page.locator('.product-gallery-badge') });
+  await expect(card).toHaveCount(1);
+  await card.locator('img').click();
+
+  const lightboxImg = page.locator('.lightbox-image');
+  await expect(lightboxImg).toHaveAttribute('src', /A008A\.webp$/);
+
+  await page.locator('.lightbox-next').click();
+  await expect(lightboxImg).toHaveAttribute('src', /A008B\.webp$/);
+
+  await page.keyboard.press('ArrowRight');
+  await expect(lightboxImg).toHaveAttribute('src', /A008A\.webp$/);
+
+  await page.keyboard.press('ArrowLeft');
+  await expect(lightboxImg).toHaveAttribute('src', /A008B\.webp$/);
+
+  await page.locator('.lightbox-dot').first().click();
+  await expect(lightboxImg).toHaveAttribute('src', /A008A\.webp$/);
+});
+
+test('single-photo product hides gallery controls and focus returns on close', async ({ page }) => {
+  await page.goto('/catalogo.html');
+  const img = page.locator('.product-card img').first();
+  await img.click();
+  await expect(page.locator('.lightbox-next')).toBeHidden();
+  await expect(page.locator('.lightbox-dots')).toBeHidden();
+
+  await page.keyboard.press('Escape');
+  await expect(img).toBeFocused();
+});

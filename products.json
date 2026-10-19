@@ -47,5 +47,16 @@
     "objectPosition": "50% 50%",
     "alt": "Arreglo con rosas coral y rosa, margaritas blancas en base",
     "price": 25
+  },
+  {
+    "key": "ramoNovia",
+    "img": "images/A008A.webp",
+    "objectPosition": "50% 20%",
+    "alt": "Novia sosteniendo un ramo de rosas color durazno con gypsophila",
+    "gallery": [
+      { "src": "images/A008A.webp", "alt": "Novia sosteniendo un ramo de rosas color durazno con gypsophila" },
+      { "src": "images/A008B.webp", "alt": "Ramo de novia de rosas blancas con gypsophila azulada sobre mantel de encaje" }
+    ],
+    "price": 40
   }
 ]
