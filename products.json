@@ -1,6 +1,7 @@
 [
   {
     "key": "tropicalVerde",
+    "category": "tropical",
     "img": "images/A001.webp",
     "objectPosition": "50% 55%",
     "alt": "Arreglo tropical con rosas naranjas, claveles y orquídeas en base verde",
@@ -8,6 +9,7 @@
   },
   {
     "key": "coloridoCristal",
+    "category": "cheerful",
     "img": "images/A002.webp",
     "objectPosition": "50% 35%",
     "alt": "Arreglo colorido con rosa roja, girasol y margaritas en base de cristal",
@@ -15,6 +17,7 @@
   },
   {
     "key": "rosaCristal",
+    "category": "romantic",
     "img": "images/A003.webp",
     "objectPosition": "50% 40%",
     "alt": "Arreglo con rosas rosadas y margaritas blancas en base de cristal",
@@ -22,6 +25,7 @@
   },
   {
     "key": "rosaBowl",
+    "category": "romantic",
     "img": "images/A004.webp",
     "objectPosition": "50% 40%",
     "alt": "Arreglo con rosas rosadas y coral, margaritas blancas en bowl de cristal",
@@ -29,6 +33,7 @@
   },
   {
     "key": "silvestreAzul",
+    "category": "wildflower",
     "img": "images/A005.webp",
     "objectPosition": "50% 45%",
     "alt": "Arreglo con hortensia azul, rosas naranjas y claveles rosados en base verde",
@@ -36,6 +41,7 @@
   },
   {
     "key": "amarilloRojo",
+    "category": "cheerful",
     "img": "images/A006.webp",
     "objectPosition": "50% 20%",
     "alt": "Arreglo con rosa roja, crisantemos amarillos, clavel naranja y margaritas blancas en bowl de cristal",
@@ -43,6 +49,7 @@
   },
   {
     "key": "rosaMargaritas",
+    "category": "romantic",
     "img": "images/A007.webp",
     "objectPosition": "50% 50%",
     "alt": "Arreglo con rosas coral y rosa, margaritas blancas en base",
@@ -50,6 +57,7 @@
   },
   {
     "key": "ramoNovia",
+    "category": "bridal",
     "img": "images/A008A.webp",
     "objectPosition": "50% 20%",
     "alt": "Novia sosteniendo un ramo de rosas color durazno con gypsophila",
@@ -61,6 +69,7 @@
   },
   {
     "key": "duraznoBlanco",
+    "category": "romantic",
     "img": "images/A009.webp",
     "objectPosition": "50% 50%",
     "alt": "Arreglo con rosas durazno, rosas y crisantemos blancos, lirios y gypsophila en florero de cristal",
@@ -68,6 +77,7 @@
   },
   {
     "key": "rosasLirios",
+    "category": "funeral",
     "img": "images/A010.webp",
     "objectPosition": "50% 55%",
     "alt": "Arreglo fúnebre con rosas durazno y blancas, lirios blancos y gypsophila",
@@ -75,6 +85,7 @@
   },
   {
     "key": "margaritasLirios",
+    "category": "funeral",
     "img": "images/A011.webp",
     "objectPosition": "50% 70%",
     "alt": "Arreglo fúnebre con margaritas y crisantemos blancos y rojos, lirios blancos y eucalipto en maceta morada",
@@ -82,6 +93,7 @@
   },
   {
     "key": "rosasCoralGypsophila",
+    "category": "funeral",
     "img": "images/A012.webp",
     "objectPosition": "50% 55%",
     "alt": "Arreglo fúnebre con rosas coral, lirios blancos, gypsophila y lazo blanco",
@@ -89,6 +101,7 @@
   },
   {
     "key": "crisantemosLirios",
+    "category": "funeral",
     "img": "images/A013.webp",
     "objectPosition": "50% 60%",
     "alt": "Arreglo fúnebre con crisantemos blancos y vino, lirios blancos y follaje en bowl de cristal",

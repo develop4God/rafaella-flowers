@@ -18,7 +18,7 @@ Sitio web para Floristería Rafaella, en Ciudad de Panamá. Catálogo de arreglo
 - `contacto.html` — Datos de contacto
 - `styles.css` — Estilos compartidos por todas las páginas
 - `images/` — Fotos de los arreglos y logos
-- `products.json` — Catálogo de productos (fuente única: imagen, precio, clave i18n)
+- `products.json` — Catálogo de productos (fuente única: imagen, precio, clave i18n, id de categoría)
 - `products.js` — Renderiza las tarjetas de producto en `index.html` y `catalogo.html` a partir de `products.json`
 - `i18n/` — Diccionarios de traducción (`es.json`, `en.json`) y `i18n.js`, que aplica las traducciones y arma los enlaces de WhatsApp
 - `lightbox.js` — Visor de imágenes ampliadas al hacer clic
@@ -26,8 +26,8 @@ Sitio web para Floristería Rafaella, en Ciudad de Panamá. Catálogo de arreglo
 ## Agregar un nuevo arreglo
 
 1. Coloca la imagen en `images/`
-2. Agrega una entrada en `products.json` (imagen, texto alternativo, precio, clave)
-3. Agrega el nombre y la categoría del producto en `i18n/es.json` e `i18n/en.json` bajo `product.<clave>.name` y `product.<clave>.category`
+2. Agrega una entrada en `products.json` (imagen, texto alternativo, precio, clave y `category`, un id sin idioma como `romantic` o `funeral`)
+3. Agrega el nombre del producto en `i18n/es.json` e `i18n/en.json` bajo `product.<clave>.name`. Si la categoría es nueva, agrega también su etiqueta bajo `category.<id>` en ambos archivos; el filtro del catálogo crea el chip automáticamente
 
 El arreglo aparecerá automáticamente en `catalogo.html`, y en `index.html` si el grid de destacados no limita la cantidad mostrada.
 
