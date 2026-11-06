@@ -20,7 +20,7 @@ module.exports = defineConfig({
     {
       name: 'mobile',
       use: { ...devices['Pixel 5'] },
-      testMatch: /category-filter/,
+      testMatch: /(category-filter|catalog-hardening)\.spec\.js$/,
     },
   ],
 });

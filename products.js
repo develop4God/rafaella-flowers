@@ -57,7 +57,19 @@
   function announceResult(count) {
     var status = document.querySelector('[data-filter-status]');
     if (!status || !window.FRi18n) return;
-    status.textContent = window.FRi18n.t('catalogo.filterResult').replace('{count}', String(count));
+    var text = window.FRi18n.t('catalogo.filterResult').replace('{count}', String(count));
+    // Clear first so an identical result is announced again by screen readers.
+    status.textContent = '';
+    window.setTimeout(function () { status.textContent = text; }, 50);
+  }
+
+  function clearResultOnLanguageChange() {
+    document.querySelectorAll('[data-lang-toggle]').forEach(function (toggle) {
+      toggle.addEventListener('click', function () {
+        var status = document.querySelector('[data-filter-status]');
+        if (status) status.textContent = '';
+      });
+    });
   }
 
   function applyFilter(bar, category, announce) {
@@ -75,12 +87,15 @@
     if (announce) announceResult(shown);
   }
 
+  function isKnownCategory(bar, category) {
+    return Array.prototype.some.call(bar.querySelectorAll('button'), function (chip) {
+      return chip.getAttribute('data-category') === category;
+    });
+  }
+
   function categoryFromHash(bar) {
     var wanted = window.location.hash.slice(1);
-    var known = Array.prototype.some.call(bar.querySelectorAll('button'), function (chip) {
-      return chip.getAttribute('data-category') === wanted;
-    });
-    return known ? wanted : 'all';
+    return isKnownCategory(bar, wanted) ? wanted : 'all';
   }
 
   function saveCategoryInUrl(category) {
@@ -90,7 +105,7 @@
 
   function renderFilter(products) {
     var bar = document.querySelector('[data-category-filter]');
-    if (!bar) return;
+    if (!bar || !document.getElementById(bar.getAttribute('data-filter-target'))) return;
     var categories = products
       .filter(hasCategory)
       .map(function (p) { return p.category; })
@@ -107,14 +122,18 @@
       saveCategoryInUrl(category);
     });
     window.addEventListener('hashchange', function () {
-      applyFilter(bar, categoryFromHash(bar), true);
+      // Other in-page anchors share the hash; only a category or an empty hash changes the filter.
+      if (window.location.hash === '' || isKnownCategory(bar, window.location.hash.slice(1))) {
+        applyFilter(bar, categoryFromHash(bar), true);
+      }
     });
+    clearResultOnLanguageChange();
     applyFilter(bar, categoryFromHash(bar), false);
   }
 
   function showLoadError() {
     document.querySelectorAll('.products-grid').forEach(function (grid) {
-      grid.innerHTML = '<p class="catalog-error" data-i18n="catalogo.loadError"></p>';
+      grid.innerHTML = '<p class="catalog-error" role="alert" data-i18n="catalogo.loadError"></p>';
     });
     if (window.FRi18n) window.FRi18n.applyTranslations();
   }
@@ -137,7 +156,6 @@
         renderFilter(products);
         if (window.FRi18n) window.FRi18n.applyTranslations();
         if (window.FRLightbox) window.FRLightbox.init();
-      })
-      .catch(showLoadError);
+      }, showLoadError);
   });
 })();
