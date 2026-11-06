@@ -25,3 +25,24 @@ test('catalogo.html shows product category, index.html does not', async ({ page 
   const count = await page.locator('article.product-card .product-category').count();
   expect(count).toBe(0);
 });
+
+test.describe('product data integrity', () => {
+  const fs = require('fs');
+  const path = require('path');
+  const es = require('../i18n/es.json');
+  const en = require('../i18n/en.json');
+
+  for (const p of products) {
+    test(`${p.key} has an image, price and ES/EN name and category`, () => {
+      expect(fs.existsSync(path.join(__dirname, '..', p.img)), `missing ${p.img}`).toBe(true);
+      for (const g of p.gallery || []) {
+        expect(fs.existsSync(path.join(__dirname, '..', g.src)), `missing ${g.src}`).toBe(true);
+      }
+      expect(p.price).toBeGreaterThan(0);
+      for (const dict of [es, en]) {
+        expect(dict[`product.${p.key}.name`], `name for ${p.key}`).toBeTruthy();
+        expect(dict[`product.${p.key}.category`], `category for ${p.key}`).toBeTruthy();
+      }
+    });
+  }
+});

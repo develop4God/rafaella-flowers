@@ -58,5 +58,40 @@
       { "src": "images/A008B.webp", "alt": "Ramo de novia de rosas blancas con gypsophila azulada sobre mantel de encaje" }
     ],
     "price": 40
+  },
+  {
+    "key": "duraznoBlanco",
+    "img": "images/A009.webp",
+    "objectPosition": "50% 50%",
+    "alt": "Arreglo con rosas durazno, rosas y crisantemos blancos, lirios y gypsophila en florero de cristal",
+    "price": 25
+  },
+  {
+    "key": "rosasLirios",
+    "img": "images/A010.webp",
+    "objectPosition": "50% 55%",
+    "alt": "Arreglo fúnebre con rosas durazno y blancas, lirios blancos y gypsophila",
+    "price": 30
+  },
+  {
+    "key": "margaritasLirios",
+    "img": "images/A011.webp",
+    "objectPosition": "50% 70%",
+    "alt": "Arreglo fúnebre con margaritas y crisantemos blancos y rojos, lirios blancos y eucalipto en maceta morada",
+    "price": 30
+  },
+  {
+    "key": "rosasCoralGypsophila",
+    "img": "images/A012.webp",
+    "objectPosition": "50% 55%",
+    "alt": "Arreglo fúnebre con rosas coral, lirios blancos, gypsophila y lazo blanco",
+    "price": 50
+  },
+  {
+    "key": "crisantemosLirios",
+    "img": "images/A013.webp",
+    "objectPosition": "50% 60%",
+    "alt": "Arreglo fúnebre con crisantemos blancos y vino, lirios blancos y follaje en bowl de cristal",
+    "price": 60
   }
 ]
