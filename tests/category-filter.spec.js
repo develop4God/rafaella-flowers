@@ -131,4 +131,7 @@ test('products with a missing or reserved category never create a bogus chip', a
   await expect(chips(page)).toHaveCount(categories.length + 1);
   await expect(page.locator('.catalog-filters button[data-category="undefined"]')).toHaveCount(0);
   await expect(page.locator('.catalog-filters button[data-category="all"]')).toHaveCount(1);
+
+  // No card may show a raw i18n key such as "category.undefined" or "category.all".
+  await expect(page.locator('article.product-card .product-category', { hasText: 'category.' })).toHaveCount(0);
 });

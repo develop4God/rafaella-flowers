@@ -16,13 +16,18 @@
     );
   }
 
+  // 'all' is reserved for the "All" chip; empty or missing ids have no label.
+  function hasCategory(p) {
+    return Boolean(p.category) && p.category !== 'all';
+  }
+
   function cardHTML(p, showCategory) {
     return (
-      '<article class="product-card" data-category="' + p.category + '">' +
+      '<article class="product-card"' + (hasCategory(p) ? ' data-category="' + p.category + '"' : '') + '>' +
       mediaHTML(p) +
       '<div class="product-body">' +
       '<h3 data-i18n="product.' + p.key + '.name"></h3>' +
-      (showCategory ? '<p class="product-category" data-i18n="category.' + p.category + '"></p>' : '') +
+      (showCategory && hasCategory(p) ? '<p class="product-category" data-i18n="category.' + p.category + '"></p>' : '') +
       '<p class="price">$' + p.price + '</p>' +
       '<a class="btn btn-whatsapp" data-wa-product="' + p.key + '" data-wa-price="' + p.price + '" data-i18n="whatsapp.pedirBoton"></a>' +
       '</div>' +
@@ -64,8 +69,9 @@
     var bar = document.querySelector('[data-category-filter]');
     if (!bar) return;
     var categories = products
+      .filter(hasCategory)
       .map(function (p) { return p.category; })
-      .filter(function (c, i, all) { return c && c !== 'all' && all.indexOf(c) === i; });
+      .filter(function (c, i, all) { return all.indexOf(c) === i; });
     bar.innerHTML =
       chipHTML('all', 'catalogo.filterAll', true) +
       categories.map(function (c) { return chipHTML(c, 'category.' + c, false); }).join('');

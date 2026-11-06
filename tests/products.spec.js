@@ -39,7 +39,7 @@ test.describe('product data integrity', () => {
         expect(fs.existsSync(path.join(__dirname, '..', g.src)), `missing ${g.src}`).toBe(true);
       }
       expect(p.price).toBeGreaterThan(0);
-      expect(p.category, `category id for ${p.key}`).toMatch(/^[a-z]+$/);
+      expect(p.category, `category id for ${p.key}`).toMatch(/^[a-z][a-z0-9-]*$/);
       for (const dict of [es, en]) {
         expect(dict[`product.${p.key}.name`], `name for ${p.key}`).toBeTruthy();
         expect(dict[`category.${p.category}`], `category label for ${p.key}`).toBeTruthy();
