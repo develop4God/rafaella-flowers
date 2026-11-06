@@ -191,9 +191,13 @@ h1, h2, h3, h4 {
 }
 .products-grid {
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+/* Catalog: bounded, centered tracks so one or two filtered cards don't stretch */
+.products-grid[data-show-category] {
   grid-template-columns: repeat(auto-fit, minmax(260px, 340px));
   justify-content: center;
-  gap: 2rem;
 }
 .product-card {
   background: var(--color-surface);
@@ -603,10 +607,12 @@ h1, h2, h3, h4 {
   cursor: pointer;
   transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
-.catalog-filters button:hover {
-  border-color: var(--color-primary);
-  color: var(--color-primary);
-  transform: translateY(-1px);
+@media (hover: hover) {
+  .catalog-filters button:not(.active):hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    transform: translateY(-1px);
+  }
 }
 .catalog-filters button:focus-visible {
   outline: 2px solid var(--color-primary);

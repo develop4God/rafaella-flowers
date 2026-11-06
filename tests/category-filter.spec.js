@@ -84,7 +84,12 @@ test('home page has no filter bar', async ({ page }) => {
   await expect(page.locator('.catalog-filters')).toHaveCount(0);
 });
 
+// Keep in sync with the products-grid track sizes in styles.css (minmax(260px, 340px)).
+const MIN_CARD_WIDTH = 255;
+const MAX_CARD_WIDTH = 345;
+
 test('filtered cards keep a sensible width and the group is centered', async ({ page }) => {
+  const viewport = page.viewportSize().width;
   for (const category of categories) {
     await chip(page, category).click();
     const grid = await page.locator('.products-grid').boundingBox();
@@ -92,12 +97,23 @@ test('filtered cards keep a sensible width and the group is centered', async ({ 
       els.map((el) => { const r = el.getBoundingClientRect(); return { left: r.left, right: r.right, width: r.width }; })
     );
     for (const box of boxes) {
-      expect(box.width, `${category} card width`).toBeGreaterThanOrEqual(255);
-      expect(box.width, `${category} card width`).toBeLessThanOrEqual(345);
+      expect(box.width, `${category} card width`).toBeGreaterThanOrEqual(Math.min(MIN_CARD_WIDTH, grid.width));
+      expect(box.width, `${category} card width`).toBeLessThanOrEqual(Math.min(MAX_CARD_WIDTH, grid.width + 1));
     }
     const left = Math.min(...boxes.map((b) => b.left));
     const right = Math.max(...boxes.map((b) => b.right));
     const gridCenter = grid.x + grid.width / 2;
     expect(Math.abs((left + right) / 2 - gridCenter), `${category} group centered`).toBeLessThan(2);
+    expect(right - left, `${category} group fits the viewport`).toBeLessThanOrEqual(viewport);
   }
+});
+
+test('home page grid still fills its row (layout not changed by the filter)', async ({ page }) => {
+  await page.goto('/index.html');
+  await expect(page.locator('article.product-card').first()).toBeVisible();
+  const grid = await page.locator('.products-grid').boundingBox();
+  const rights = await page.locator('article.product-card').evaluateAll((els) =>
+    els.map((el) => el.getBoundingClientRect().right)
+  );
+  expect(Math.abs(Math.max(...rights) - (grid.x + grid.width))).toBeLessThan(2);
 });
