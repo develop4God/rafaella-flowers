@@ -143,3 +143,30 @@ test('the result status is cleared when the language changes', async ({ page }) 
   await chip(page, 'funeral').click();
   await expect(page.locator('[data-filter-status]')).toHaveText(en['catalogo.filterResult'].replace('{count}', String(countIn('funeral'))));
 });
+
+test.describe('filter bar without categories', () => {
+  const cases = {
+    'an empty product list': [],
+    'products without any category': () => products.map((p) => ({ ...p, category: undefined })),
+  };
+  for (const [name, data] of Object.entries(cases)) {
+    test(`stays hidden for ${name}`, async ({ page }) => {
+      const body = typeof data === 'function' ? data() : data;
+      await page.route('**/products.json', (route) => route.fulfill({ json: body }));
+      await page.goto('/catalogo.html');
+      await expect(page.locator('article.product-card')).toHaveCount(body.length);
+      await expect(page.locator('.catalog-filters')).toBeHidden();
+    });
+  }
+});
+
+test('a language change right after filtering does not leave stale status text', async ({ page }) => {
+  await page.goto('/catalogo.html');
+  await expect(page.locator('.catalog-filters')).toBeVisible();
+  await page.evaluate(() => {
+    document.querySelector('.catalog-filters button[data-category="funeral"]').click();
+    document.querySelector('[data-lang-toggle]').click();
+  });
+  await page.waitForTimeout(200);
+  await expect(page.locator('[data-filter-status]')).toHaveText('');
+});
