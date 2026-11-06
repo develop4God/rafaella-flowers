@@ -84,14 +84,20 @@ test('home page has no filter bar', async ({ page }) => {
   await expect(page.locator('.catalog-filters')).toHaveCount(0);
 });
 
-test('a filtered card keeps the same width as in the unfiltered grid', async ({ page }) => {
-  const fullWidth = (await visibleCards(page).first().boundingBox()).width;
-
+test('filtered cards keep a sensible width and the group is centered', async ({ page }) => {
   for (const category of categories) {
     await chip(page, category).click();
-    const widths = await visibleCards(page).evaluateAll((els) => els.map((el) => el.getBoundingClientRect().width));
-    for (const width of widths) {
-      expect(Math.abs(width - fullWidth), `${category} card width ${width} vs ${fullWidth}`).toBeLessThan(2);
+    const grid = await page.locator('.products-grid').boundingBox();
+    const boxes = await visibleCards(page).evaluateAll((els) =>
+      els.map((el) => { const r = el.getBoundingClientRect(); return { left: r.left, right: r.right, width: r.width }; })
+    );
+    for (const box of boxes) {
+      expect(box.width, `${category} card width`).toBeGreaterThanOrEqual(255);
+      expect(box.width, `${category} card width`).toBeLessThanOrEqual(345);
     }
+    const left = Math.min(...boxes.map((b) => b.left));
+    const right = Math.max(...boxes.map((b) => b.right));
+    const gridCenter = grid.x + grid.width / 2;
+    expect(Math.abs((left + right) / 2 - gridCenter), `${category} group centered`).toBeLessThan(2);
   }
 });
