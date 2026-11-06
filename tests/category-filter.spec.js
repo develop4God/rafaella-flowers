@@ -83,3 +83,15 @@ test('home page has no filter bar', async ({ page }) => {
   await expect(page.locator('article.product-card').first()).toBeVisible();
   await expect(page.locator('.catalog-filters')).toHaveCount(0);
 });
+
+test('a filtered card keeps the same width as in the unfiltered grid', async ({ page }) => {
+  const fullWidth = (await visibleCards(page).first().boundingBox()).width;
+
+  for (const category of categories) {
+    await chip(page, category).click();
+    const widths = await visibleCards(page).evaluateAll((els) => els.map((el) => el.getBoundingClientRect().width));
+    for (const width of widths) {
+      expect(Math.abs(width - fullWidth), `${category} card width ${width} vs ${fullWidth}`).toBeLessThan(2);
+    }
+  }
+});
