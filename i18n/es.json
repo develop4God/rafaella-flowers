@@ -34,6 +34,8 @@
   "catalogo.note": "¿Buscas algo personalizado? Cuéntanos tu idea por WhatsApp.",
   "catalogo.filterAll": "Todos",
   "catalogo.filterLabel": "Filtrar por tipo",
+  "catalogo.filterResult": "Arreglos: {count}",
+  "catalogo.loadError": "No pudimos cargar el catálogo. Inténtalo de nuevo en unos minutos.",
   "category.tropical": "Tropical",
   "category.cheerful": "Alegre",
   "category.romantic": "Romántico",
