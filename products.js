@@ -54,31 +54,93 @@
     );
   }
 
-  function applyFilter(bar, category) {
+  var statusTimer;
+
+  function announceResult(count) {
+    var status = document.querySelector('[data-filter-status]');
+    if (!status || !window.FRi18n) return;
+    var text = window.FRi18n.t('catalogo.filterResult').replace('{count}', String(count));
+    // Clear first so an identical result is announced again by screen readers.
+    window.clearTimeout(statusTimer);
+    status.textContent = '';
+    statusTimer = window.setTimeout(function () { status.textContent = text; }, 50);
+  }
+
+  function clearResultOnLanguageChange() {
+    document.querySelectorAll('[data-lang-toggle]').forEach(function (toggle) {
+      toggle.addEventListener('click', function () {
+        var status = document.querySelector('[data-filter-status]');
+        window.clearTimeout(statusTimer);
+        if (status) status.textContent = '';
+      });
+    });
+  }
+
+  function applyFilter(bar, category, announce) {
     bar.querySelectorAll('button').forEach(function (chip) {
       var isActive = chip.getAttribute('data-category') === category;
       chip.classList.toggle('active', isActive);
       chip.setAttribute('aria-pressed', String(isActive));
     });
-    document.querySelectorAll('.products-grid .product-card').forEach(function (card) {
+    var grid = document.getElementById(bar.getAttribute('data-filter-target'));
+    var shown = 0;
+    grid.querySelectorAll('.product-card').forEach(function (card) {
       card.hidden = category !== 'all' && card.getAttribute('data-category') !== category;
+      if (!card.hidden) shown += 1;
     });
+    if (announce) announceResult(shown);
+  }
+
+  function isKnownCategory(bar, category) {
+    return Array.prototype.some.call(bar.querySelectorAll('button'), function (chip) {
+      return chip.getAttribute('data-category') === category;
+    });
+  }
+
+  function categoryFromHash(bar) {
+    var wanted = window.location.hash.slice(1);
+    return isKnownCategory(bar, wanted) ? wanted : 'all';
+  }
+
+  function saveCategoryInUrl(category) {
+    var url = window.location.pathname + window.location.search + (category === 'all' ? '' : '#' + category);
+    window.history.replaceState(null, '', url);
   }
 
   function renderFilter(products) {
     var bar = document.querySelector('[data-category-filter]');
-    if (!bar) return;
+    if (!bar || !document.getElementById(bar.getAttribute('data-filter-target'))) return;
     var categories = products
       .filter(hasCategory)
       .map(function (p) { return p.category; })
       .filter(function (c, i, all) { return all.indexOf(c) === i; });
+    if (!categories.length) return;
     bar.innerHTML =
       chipHTML('all', 'catalogo.filterAll', true) +
       categories.map(function (c) { return chipHTML(c, 'category.' + c, false); }).join('');
+    bar.hidden = false;
     bar.addEventListener('click', function (event) {
       var chip = event.target.closest('button[data-category]');
-      if (chip) applyFilter(bar, chip.getAttribute('data-category'));
+      if (!chip) return;
+      var category = chip.getAttribute('data-category');
+      applyFilter(bar, category, true);
+      saveCategoryInUrl(category);
     });
+    window.addEventListener('hashchange', function () {
+      // Other in-page anchors share the hash; only a category or an empty hash changes the filter.
+      if (window.location.hash === '' || isKnownCategory(bar, window.location.hash.slice(1))) {
+        applyFilter(bar, categoryFromHash(bar), true);
+      }
+    });
+    clearResultOnLanguageChange();
+    applyFilter(bar, categoryFromHash(bar), false);
+  }
+
+  function showLoadError() {
+    document.querySelectorAll('.products-grid').forEach(function (grid) {
+      grid.innerHTML = '<p class="catalog-error" role="alert" data-i18n="catalogo.loadError"></p>';
+    });
+    if (window.FRi18n) window.FRi18n.applyTranslations();
   }
 
   window.FRProducts = {
@@ -90,12 +152,15 @@
     if (!grids.length) return;
 
     fetch('products.json')
-      .then(function (res) { return res.json(); })
+      .then(function (res) {
+        if (!res.ok) throw new Error('products.json: HTTP ' + res.status);
+        return res.json();
+      })
       .then(function (products) {
         render(products);
         renderFilter(products);
         if (window.FRi18n) window.FRi18n.applyTranslations();
         if (window.FRLightbox) window.FRLightbox.init();
-      });
+      }, showLoadError);
   });
 })();
