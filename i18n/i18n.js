@@ -38,6 +38,10 @@
       el.setAttribute('placeholder', t(el.getAttribute('data-i18n-placeholder')));
     });
 
+    document.querySelectorAll('[data-i18n-aria-label]').forEach(function (el) {
+      el.setAttribute('aria-label', t(el.getAttribute('data-i18n-aria-label')));
+    });
+
     document.querySelectorAll('title[data-i18n]').forEach(function (el) {
       document.title = t(el.getAttribute('data-i18n'));
     });
