@@ -600,12 +600,24 @@ h1, h2, h3, h4 {
   font-weight: 600;
   font-size: 0.85rem;
   cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+.catalog-filters button:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  transform: translateY(-1px);
+}
+.catalog-filters button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 .catalog-filters button.active {
   background: var(--color-primary);
   color: #fff;
   border-color: var(--color-primary);
+  box-shadow: 0 4px 12px rgba(181, 56, 77, 0.3);
 }
+.product-card[hidden] { display: none; }
 .product-category {
   text-transform: uppercase;
   letter-spacing: 0.05em;
