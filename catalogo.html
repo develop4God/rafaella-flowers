@@ -39,8 +39,9 @@
 </section>
 
 <section class="products container">
-  <div class="catalog-filters" role="group" data-category-filter data-i18n-aria-label="catalogo.filterLabel" aria-label="Filtrar por tipo"></div>
-  <div class="products-grid products-grid--catalog" data-show-category></div>
+  <div class="catalog-filters" role="group" hidden data-category-filter data-filter-target="catalog-grid" data-i18n-aria-label="catalogo.filterLabel" aria-label="Filtrar por tipo"></div>
+  <p class="visually-hidden" role="status" aria-live="polite" data-filter-status></p>
+  <div class="products-grid products-grid--catalog" id="catalog-grid" data-show-category></div>
 
   <p class="catalog-note" data-i18n="catalogo.note">¿Buscas algo personalizado? Cuéntanos tu idea por WhatsApp.</p>
 </section>
