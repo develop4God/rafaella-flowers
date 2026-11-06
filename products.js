@@ -65,7 +65,7 @@
     if (!bar) return;
     var categories = products
       .map(function (p) { return p.category; })
-      .filter(function (c, i, all) { return all.indexOf(c) === i; });
+      .filter(function (c, i, all) { return c && c !== 'all' && all.indexOf(c) === i; });
     bar.innerHTML =
       chipHTML('all', 'catalogo.filterAll', true) +
       categories.map(function (c) { return chipHTML(c, 'category.' + c, false); }).join('');

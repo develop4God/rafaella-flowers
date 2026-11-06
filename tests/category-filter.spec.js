@@ -1,6 +1,7 @@
 const { test, expect } = require('@playwright/test');
 const products = require('../products.json');
 const es = require('../i18n/es.json');
+const en = require('../i18n/en.json');
 
 const categories = [...new Set(products.map((p) => p.category))];
 const countIn = (category) => products.filter((p) => p.category === category).length;
@@ -58,11 +59,11 @@ test('clicking the active chip again keeps the filter', async ({ page }) => {
 
 test('chip labels and the active filter follow the language toggle', async ({ page }) => {
   await chip(page, 'romantic').click();
-  await expect(chip(page, 'romantic')).toHaveText('Romántico');
+  await expect(chip(page, 'romantic')).toHaveText(es['category.romantic']);
 
   await page.click('[data-lang-toggle]');
-  await expect(chip(page, 'romantic')).toHaveText('Romantic');
-  await expect(chips(page).first()).toHaveText('All');
+  await expect(chip(page, 'romantic')).toHaveText(en['category.romantic']);
+  await expect(chips(page).first()).toHaveText(en['catalogo.filterAll']);
   await expect(visibleCards(page)).toHaveCount(countIn('romantic'));
 });
 
@@ -116,4 +117,18 @@ test('home page grid still fills its row (layout not changed by the filter)', as
     els.map((el) => el.getBoundingClientRect().right)
   );
   expect(Math.abs(Math.max(...rights) - (grid.x + grid.width))).toBeLessThan(2);
+});
+
+test('products with a missing or reserved category never create a bogus chip', async ({ page }) => {
+  const bad = [
+    { ...products[0], key: 'noCategory', category: undefined },
+    { ...products[0], key: 'reservedAll', category: 'all' },
+  ];
+  await page.route('**/products.json', (route) => route.fulfill({ json: [...products, ...bad] }));
+  await page.goto('/catalogo.html');
+  await expect(page.locator('article.product-card')).toHaveCount(products.length + bad.length);
+
+  await expect(chips(page)).toHaveCount(categories.length + 1);
+  await expect(page.locator('.catalog-filters button[data-category="undefined"]')).toHaveCount(0);
+  await expect(page.locator('.catalog-filters button[data-category="all"]')).toHaveCount(1);
 });

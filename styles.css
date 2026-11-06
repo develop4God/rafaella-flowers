@@ -195,7 +195,7 @@ h1, h2, h3, h4 {
   gap: 2rem;
 }
 /* Catalog: bounded, centered tracks so one or two filtered cards don't stretch */
-.products-grid[data-show-category] {
+.products-grid--catalog {
   grid-template-columns: repeat(auto-fit, minmax(260px, 340px));
   justify-content: center;
 }
